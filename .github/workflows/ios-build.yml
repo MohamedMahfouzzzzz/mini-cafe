@@ -28,6 +28,15 @@ jobs:
       - name: 📦 Get Flutter dependencies
         run: flutter pub get
 
+      # 4. Create and patch iOS Podfile
+      - name: 🛠️ Patch Podfile for iOS 15
+        run: |
+          cd ios
+          pod init || true
+          sed -i '' 's/^# platform :ios.*/platform :ios, '"'"'15.0'"'"'/g' Podfile
+          sed -i '' 's/^platform :ios.*/platform :ios, '"'"'15.0'"'"'/g' Podfile
+          cd ..
+
       # 4. Build iOS without code signing (creates Runner.app)
       - name: 🏗️ Build iOS (No Codesign)
         run: flutter build ios --release --no-codesign
