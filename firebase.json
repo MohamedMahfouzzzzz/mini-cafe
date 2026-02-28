@@ -1,0 +1,46 @@
+{
+  "flutter": {
+    "platforms": {
+      "android": {
+        "default": {
+          "projectId": "mochat-backend",
+          "appId": "1:714779797129:android:fe05b95ef4de28074cc858",
+          "fileOutput": "android/app/google-services.json"
+        }
+      },
+      "dart": {
+        "lib/firebase_options.dart": {
+          "projectId": "mochat-backend",
+          "configurations": {
+            "android": "1:714779797129:android:fe05b95ef4de28074cc858",
+            "ios": "1:714779797129:ios:58c1503648ea530e4cc858",
+            "macos": "1:714779797129:ios:58c1503648ea530e4cc858",
+            "web": "1:714779797129:web:922b3882ffbf2b3b4cc858",
+            "windows": "1:714779797129:web:7ceaece0bbe5ff284cc858"
+          }
+        }
+      }
+    }
+  },
+  "functions": [
+    {
+      "source": "functions",
+      "codebase": "default",
+      "ignore": [
+        "node_modules",
+        ".git",
+        "firebase-debug.log",
+        "firebase-debug.*.log",
+        "*.local"
+      ]
+    }
+  ],
+  "hosting": {
+    "public": "public",
+    "ignore": [
+      "firebase.json",
+      "**/.*",
+      "**/node_modules/**"
+    ]
+  }
+}

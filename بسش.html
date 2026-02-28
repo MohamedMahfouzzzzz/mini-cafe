@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Add Snack</title>
+  </head>
+  <body>
+    <h2>Add a Snack</h2>
+    <form id="snackForm">
+      <input type="text" id="name" placeholder="Snack name" required /><br />
+      <input type="text" id="category" placeholder="Category" required /><br />
+      <input
+        type="number"
+        id="price"
+        placeholder="Price"
+        step="0.01"
+        required
+      /><br />
+      <textarea id="description" placeholder="Description" required></textarea
+      ><br />
+      <label>Popular?</label>
+      <input type="checkbox" id="isPopular" /><br />
+      <input type="file" id="image" accept="image/*" required /><br />
+      <button type="submit">Add Snack</button>
+    </form>
+
+    <p id="status"></p>
+
+    <!-- ✅ Use Firebase Modular SDK -->
+    <script type="module">
+      import { initializeApp } from "https://www.gstatic.com/firebasejs/10.13.2/firebase-app.js";
+      import {
+        getFirestore,
+        collection,
+        addDoc,
+        serverTimestamp,
+      } from "https://www.gstatic.com/firebasejs/10.13.2/firebase-firestore.js";
+
+      // 🔥 Your Firebase config
+      const firebaseConfig = {
+        apiKey: "AIzaSyD_IqEGaRR3pbbDjAI70hsk1Lfn9Dslr4o",
+        authDomain: "mochat-backend.firebaseapp.com",
+        projectId: "mochat-backend",
+        storageBucket: "mochat-backend.appspot.com",
+        messagingSenderId: "714779797129",
+        appId: "1:714779797129:web:922b3882ffbf2b3b4cc858",
+        measurementId: "G-516MGWVCXJ",
+      };
+
+      const app = initializeApp(firebaseConfig);
+      const db = getFirestore(app);
+
+      const form = document.getElementById("snackForm");
+      const status = document.getElementById("status");
+
+      form.addEventListener("submit", async (e) => {
+        e.preventDefault();
+
+        const name = document.getElementById("name").value.trim();
+        const category = document.getElementById("category").value.trim();
+        const price = parseFloat(document.getElementById("price").value);
+        const description = document.getElementById("description").value.trim();
+        const isPopular = document.getElementById("isPopular").checked;
+        const imageFile = document.getElementById("image").files[0];
+
+        if (!imageFile) {
+          status.textContent = "Please select an image.";
+          return;
+        }
+
+        status.textContent = "Uploading image to Cloudinary...";
+
+        try {
+          // ☁️ Upload to Cloudinary
+          const formData = new FormData();
+          formData.append("file", imageFile);
+          formData.append("upload_preset", "eighthgroupfriends");
+
+          const res = await fetch(
+            "https://api.cloudinary.com/v1_1/dok8w6cmc/image/upload",
+            {
+              method: "POST",
+              body: formData,
+            }
+          );
+
+          const data = await res.json();
+          const imageUrl = data.secure_url;
+
+          status.textContent = "Saving snack to Firestore...";
+
+          // 🧁 Save to Firestore
+          await addDoc(collection(db, "snacks"), {
+            name,
+            category,
+            price,
+            description,
+            isPopular,
+            imageUrl,
+            createdAt: serverTimestamp(),
+          });
+
+          status.textContent = "✅ Snack added successfully!";
+          form.reset();
+        } catch (error) {
+          console.error(error);
+          status.textContent = "❌ Error: " + error.message;
+        }
+      });
+    </script>
+  </body>
+</html>

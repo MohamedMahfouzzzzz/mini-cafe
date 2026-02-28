@@ -1,0 +1,86 @@
+{
+  "project_info": {
+    "project_number": "714779797129",
+    "project_id": "mochat-backend",
+    "storage_bucket": "mochat-backend.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:714779797129:android:f0faa2d63d845fb84cc858",
+        "android_client_info": {
+          "package_name": "com.example.av_messanger"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB-moOwECCwNISzov13HeYGO1AlbqjaNOY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:714779797129:android:fe05b95ef4de28074cc858",
+        "android_client_info": {
+          "package_name": "com.example.mini_cafe"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB-moOwECCwNISzov13HeYGO1AlbqjaNOY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:714779797129:android:aa4dd4bfdf393c4f4cc858",
+        "android_client_info": {
+          "package_name": "com.example.mochat"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB-moOwECCwNISzov13HeYGO1AlbqjaNOY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:714779797129:android:b48c7549a3ec8c674cc858",
+        "android_client_info": {
+          "package_name": "com.mugames.vidsnap"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB-moOwECCwNISzov13HeYGO1AlbqjaNOY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
